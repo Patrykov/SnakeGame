@@ -43,7 +43,7 @@ public class Board extends JPanel implements ActionListener {
     }
 
     private void initBoard() {
-        addKeyListener(new KeyControll());
+        addKeyListener(new KeyControl());
         setBackground(Color.black);
         setFocusable(true);
         setDoubleBuffered(true);
@@ -114,6 +114,7 @@ public class Board extends JPanel implements ActionListener {
         g.setFont(small);
         g.drawString(msg, (B_WIDTH - metrics.stringWidth(msg)) / 2, B_HEIGHT / 2);
         g.drawString("Score: " + score, 100, 100);
+        g.drawString("Space to RESTART GAME", 50, 50);
     }
 
     private void locateApple() {
@@ -188,10 +189,11 @@ public class Board extends JPanel implements ActionListener {
     }
 
 
-    private class KeyControll extends KeyAdapter {
+    private class KeyControl extends KeyAdapter {
 
         @Override
         public void keyPressed(KeyEvent e) {
+
             int key = e.getKeyCode();
 
             if ((key == KeyEvent.VK_LEFT) && (!rightDirection)) {
@@ -216,6 +218,9 @@ public class Board extends JPanel implements ActionListener {
                 downDirection = true;
                 rightDirection = false;
                 leftDirection = false;
+            }
+            if (key == KeyEvent.VK_SPACE){
+                score=0;
             }
         }
     }
