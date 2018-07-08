@@ -14,10 +14,12 @@ public class Board extends JPanel implements ActionListener {
     private final int DOT_SIZE = 10;
     private final int ALL_DOTS = 900;
     private final int RAND_POS = 29;
-    private final int DELAY = 140;
+    private final int DELAY = 100;
 
     private final int x[] = new int[ALL_DOTS];
     private final int y[] = new int[ALL_DOTS];
+
+    int score = 0;
 
     private Image ball;
     private Image apple;
@@ -111,6 +113,7 @@ public class Board extends JPanel implements ActionListener {
         g.setColor(Color.white);
         g.setFont(small);
         g.drawString(msg, (B_WIDTH - metrics.stringWidth(msg)) / 2, B_HEIGHT / 2);
+        g.drawString("Score: " + score, 100, 100);
     }
 
     private void locateApple() {
@@ -169,6 +172,7 @@ public class Board extends JPanel implements ActionListener {
         if ((x[0] == apple_x) && (y[0] == apple_y)) {
 
             dots++;
+            score++;
             locateApple();
         }
     }
