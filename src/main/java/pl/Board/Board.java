@@ -1,5 +1,7 @@
 package pl.Board;
 
+import pl.Snake.Snake;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -219,8 +221,12 @@ public class Board extends JPanel implements ActionListener {
                 rightDirection = false;
                 leftDirection = false;
             }
-            if (key == KeyEvent.VK_SPACE){
-                score=0;
+            if (key == KeyEvent.VK_SPACE) {
+
+                EventQueue.invokeLater(() -> {
+                    JFrame ex = new Snake();
+                    ex.setVisible(true);
+                });
             }
         }
     }
